@@ -1,6 +1,6 @@
 # MailProbe — Email Deliverability Checker
 
-A small web application that checks a pasted list of email addresses and reports, for each one,
+A simple web application that checks the inputs of email addresses by user(upto-250) and reports, for each one,
 whether it is **likely to be delivered**, **likely to bounce**, or **unknown**.
 
 Paste a list (one per line, comma-separated, or mixed into text) and every address runs through
@@ -35,7 +35,7 @@ The application in this sandbox was verified against live DNS. Its outbound conn
 and other MX hosts time out with `ETIMEDOUT`). This is normal — most cloud and shared hosting
 providers block outbound port 25 to fight spam. Here is the honest breakdown:
 
-### ✅ Always works (needs only DNS, which is allowed here)
+### Always works (needs only DNS, which is allowed here)
 
 - **Syntax validation** — RFC-style parsing: local-part length/dot rules, domain labels, TLD shape,
   254-character limit, whitespace/control-character rejection, punycode IDN domains.
@@ -47,7 +47,7 @@ providers block outbound port 25 to fight spam. Here is the honest breakdown:
 - **Signals** — disposable/throwaway domain detection, role-account detection (`info@`, `admin@`, …),
   free-provider tagging, and typo suggestions ("did you mean `jane@gmail.com`?" for `gmial.com`).
 
-### ⚠️ Does not work from this hosted environment
+### Does not work from this hosted environment
 
 - **Mailbox-level SMTP verification.** Because outbound port 25 is blocked, the probe can never
   complete a conversation with the recipient's mail server. Every SMTP-dependent check returns
@@ -56,7 +56,7 @@ providers block outbound port 25 to fight spam. Here is the honest breakdown:
 - **Catch-all detection** also depends on a completed SMTP conversation, so on a blocked host it
   is likewise unavailable.
 
-### 🖥️ Running locally for full mailbox checks
+### Running locally for full mailbox checks
 
 On a typical home/office connection, outbound port 25 is open, and the same codebase performs the
 complete check, including per-mailbox verification and catch-all detection:
@@ -174,5 +174,5 @@ Next.js 16 (App Router) · TypeScript · Tailwind CSS 4 · shadcn/ui · Node `dn
 for DNS and SMTP — no third-party verification service is called; everything runs in-process.
 
 
-LIVE LINK
+## HOSTED-RUNNING-SPACE 
 https://edc-shieldnex-aerospace.vercel.app/
